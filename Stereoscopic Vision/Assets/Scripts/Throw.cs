@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Throw : MonoBehaviour
 {
+    private int vector_Z = -1;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,12 @@ public class Throw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(0.0f, 0.0f , -Time.deltaTime*0.5f);
+        if(transform.position.z < 1){
+            vector_Z = 1;
+        }else if(transform.position.z > 10){
+            vector_Z = -1;
+        }
+
+        transform.position += new Vector3(0.0f, 0.0f , vector_Z*Time.deltaTime*1f);
     }
 }
